@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Courses - Student Portal</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-purple navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Student Portal</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="students.html">Students</a></li>
+                <li class="nav-item"><a class="nav-link active" href="courses.html">Courses</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<main class="container mt-5">
+
+    
+    <h2 class="mb-4 text-purple"><i class="bi bi-journal-bookmark-fill"></i> Available Courses</h2>
+
+    <div class="d-flex flex-wrap gap-2 mb-4">
+        <button class="btn btn-purple" id="all-btn">All Courses</button>
+        <button class="btn btn-outline-primary" data-filter="system">System Management</button>
+        <button class="btn btn-outline-primary" data-filter="business">Business</button>
+        <button class="btn btn-outline-primary" data-filter="accounting">Accounting</button>
+        <button class="btn btn-outline-primary" data-filter="education">Education</button>
+    </div>
+
+   
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="courses-grid">
+
+        
+        <div class="col category" data-category="system">
+            <div class="card card-purple p-3 shadow-sm h-100">
+                <h5>💻 System Management</h5>
+                <ul>
+                    <li>IMS565 Information System Project Management </li>
+                    <li>IMS564 User Experience Design </li>
+                    <li>IMS560 Advanced Database Management System </li>
+                    <li>IMS566 Advanced Web Design Development And Content Management </li>
+                    <li>IMR533 Information Ethics & Law </li>
+                    <li>TJC501 Introductory Japanese </li>
+                </ul>
+            </div>
+        </div>
+
+        
+        <div class="col category" data-category="business">
+            <div class="card card-purple p-3 shadow-sm h-100">
+                <h5>💼 Business</h5>
+                <ul>
+                    <li>BUS510 Strategic Management</li>
+                    <li>BUS505 Financial Management</li>
+                    <li>BUS502 Marketing Essentials</li>
+                    <li>BUS501 Introduction to Business</li>
+                </ul>
+            </div>
+        </div>
+
+       
+        <div class="col category" data-category="accounting">
+            <div class="card card-purple p-3 shadow-sm h-100">
+                <h5>🏦 Accounting</h5>
+                <ul>
+                    <li>ACC580 Advanced Auditing</li>
+                    <li>ACC570 Management Accounting</li>
+                    <li>ACC560 Financial Accounting II</li>
+                    <li>ACC550 Financial Accounting I</li>
+                </ul>
+            </div>
+        </div>
+
+        
+        <div class="col category" data-category="education">
+            <div class="card card-purple p-3 shadow-sm h-100">
+                <h5>📚 Education</h5>
+                <ul>
+                    <li>EDU560 Curriculum Development</li>
+                    <li>EDU555 Educational Psychology</li>
+                    <li>EDU550 Teaching Methods</li>
+                    <li>EDU545 Introduction to Education</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+
+<footer class="text-center mt-5 p-3 navbar-purple text-white">
+    &copy; 2025 Student Portal. All rights reserved.
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+const buttons = document.querySelectorAll('button[data-filter]');
+const allBtn = document.getElementById('all-btn');
+const categories = document.querySelectorAll('.category');
+
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        categories.forEach(cat => {
+            if (cat.dataset.category === filter) {
+                cat.style.display = 'block';
+            } else {
+                cat.style.display = 'none';
+            }
+        });
+    });
+});
+
+
+allBtn.addEventListener('click', () => {
+    categories.forEach(cat => cat.style.display = 'block');
+});
+</script>
+
+</body>
+</html>
+
